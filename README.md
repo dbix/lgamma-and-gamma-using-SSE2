@@ -10,14 +10,12 @@ lgamma(z):
 	y = x = z;
 	tmp = x + 5.2421875;
 	tmp = (x + 0.5) * log(tmp) - tmp
+  	ser = 0.999999999999997092;
+  	for (int j = 0; j < 14; j++) 
+  		ser += cof[j] / ++y;
 	
-  ser = 0.999999999999997092;
-  
-  for (int j = 0; j < 14; j++) 
-  	ser += cof[j] / ++y;
-	
-  return tmp + log(2.5066282746310005 * ser / x);
+ 	return tmp + log(2.5066282746310005 * ser / x);
 
 gamma(z):
 
-  return exp(lgamma(z))
+  	return exp(lgamma(z))
